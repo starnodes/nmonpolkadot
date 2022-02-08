@@ -2,6 +2,30 @@
 
 A complete log file based Polkadot validator uptime monitoring solution for Zabbix. It consists of the shell script nmon.sh for generating log files on the host and the template zbx_5_template_nmonpolkadot.xml for a Zabbix 5.x server. Also useful for other monitoring platforms (with log exporter) and as a tool.
 
+### quick start
+
+```sh
+sudo apt install -y screen
+sudo apt -y install jq bc
+sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates && curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo apt update && sudo apt -y install nodejs
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+sudo yarn global add @polkadot/api-cli
+cd /tmp
+wget https://raw.githubusercontent.com/toxi42/nmonpolkadot/main/nmon.sh
+!change your validator adress in nmon.sh
+rm -f /tmp/nmon-root*
+screen -d -m -S nmon /tmp/nmon.sh
+screen -S nmon -X quit #if you need stop
+crontab -e
+@reboot sleep 15; rm -f /tmp/nmon-root*
+@reboot sleep 60; screen -d -m -S nmon /tmp/nmon.sh
+install template to ur zabbix server
+use only active zabbix-agent!
+change HOST macros to ur location log /tmp/nmon-root.log 
+```
+
 ### Concept
 
 nmon.sh generates human-readable logs that look like:

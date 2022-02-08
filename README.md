@@ -14,6 +14,7 @@ sudo apt update && sudo apt install yarn
 sudo yarn global add @polkadot/api-cli
 cd /tmp
 wget https://raw.githubusercontent.com/toxi42/nmonpolkadot/main/nmon.sh
+chmod +x /tmp/nmon.sh
 !change your validator adress in nmon.sh
 rm -f /tmp/nmon-root*
 screen -d -m -S nmon /tmp/nmon.sh

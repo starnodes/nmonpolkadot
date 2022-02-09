@@ -12,19 +12,18 @@ sudo apt update && sudo apt -y install nodejs
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install yarn
 sudo yarn global add @polkadot/api-cli
-cd /tmp
-wget https://raw.githubusercontent.com/toxi42/nmonpolkadot/main/nmon.sh
-chmod +x /tmp/nmon.sh
+wget -qO /home/nmon.sh https://raw.githubusercontent.com/toxi42/nmonpolkadot/main/nmon.sh
+chmod +x /home/nmon.sh
 !change your validator adress in nmon.sh
-rm -f /tmp/nmon-root*
-screen -d -m -S nmon /tmp/nmon.sh
+rm -f /home/nmon-root*
+screen -d -m -S nmon /home/nmon.sh
 screen -S nmon -X quit #if you need stop
 crontab -e
-@reboot sleep 15; rm -f /tmp/nmon-root*
-@reboot sleep 60; screen -d -m -S nmon /tmp/nmon.sh
+@reboot sleep 15; rm -f /home/nmon-root*
+@reboot sleep 60; screen -d -m -S nmon /home/nmon.sh
 install template to ur zabbix server
 use only active zabbix-agent!
-change HOST macros to ur location log /tmp/nmon-root.log 
+change HOST macros to ur location log /home/nmon-root.log 
 ```
 
 ### Concept

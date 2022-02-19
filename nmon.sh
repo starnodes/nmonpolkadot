@@ -22,7 +22,7 @@ HEARTBEATOFFSET="8"     # the block interval following the expected heartbeat he
 LAGBEHIND="1"           # threshold lag for behind for printing output in colorW
 LAGFINALIZATION="5"     # threshold lag for finalization for printing output in colorW
 LOGNAME=""              # a custom log file name can be chosen, if left empty default is 'nmon-<username>.log'
-LOGPATH="$(pwd)"        # the directory where the log file is stored, for customization insert path like: '/my/path'
+LOGPATH="/home"        # the directory where the log file is stored, for customization insert path like: '/my/path' or '$(pwd)'
 LOGSIZE="200"           # the max number of lines after that the log gets rotated or truncated to reduce its size
 LOGROTATION="1"         # options for log rotation: (1) rotate to $LOGNAME.1 every $LOGSIZE lines;  (2) append to $LOGNAME.1 every $LOGSIZE lines; (3) truncate $logfile to $LOGSIZE every iteration
 ### internal:           #
